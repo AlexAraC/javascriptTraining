@@ -1,5 +1,8 @@
 //var + nombre de variable + asignación de valor
-
+// var le decimos a la pc que genere un espacio de memoria alternable
+// seguidanmente helloWorld es aqui el nombre que usaremos para referirnos a ese espacio de memoria
+// = es el operador de asignación, le decimos a la pc que asigne un valor a ese espacio de memoria
+// 'Hello, JavaScript!' es el valor que se asignará a ese espacio de memoria
 var helloWorld = 'Hello, JavaScript!'
 console.log(helloWorld)
 
