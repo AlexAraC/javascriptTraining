@@ -10,7 +10,7 @@ let union = soyUnString + adicional + " y estoy aprendiendo a concatenar strings
 console.log(union)
 
 //obtener la longitud de un string
-console.log("Es de longitud " + soyUnString.length) // 21\
+console.log("Es de longitud " + soyUnString.length) // .lenght sirve para que sea el resultado de todo el numero
 
 //obtener un caracter específico de un string
 console.log("El primer caracter es " + soyUnString[0]) // H
