@@ -1,10 +1,11 @@
 //Strings
-
 let soyUnString = "Hola, soy un string"
 let adicional = " y me gusta JavaScript"
+
 // usamos operadores aritméticos para concatenar strings
 // el operador de suma (+) se utiliza para concatenar strings, es decir, unir dos o más strings en uno solo
 console.log(soyUnString + adicional)
+
 // tambien podemos usar el operador de asignación para concatenar strings, es decir, unir un string a otro string ya existente
 let union = soyUnString + adicional + " y estoy aprendiendo a concatenar strings"
 console.log(union)
