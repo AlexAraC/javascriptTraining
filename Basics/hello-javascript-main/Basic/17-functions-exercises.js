@@ -127,7 +127,33 @@ let numeros = [1,2,3,4,5,6,7,8]
 console.log(sumaPares(numeros))
 
 // 8. Crea una función que reciba un array de números y devuelva un nuevo array con cada número elevado al cuadrado
-
+let numeroEjercicio8 = [1,2,3,4,5,6,7,8]
+function elevar(numeroEjercicio8){
+    let i = 0
+    let resultado = []
+    for(let valor of numeroEjercicio8.length){
+        resultado[i] = numeroEjercicio8[i] * numeroEjercicio8[i]
+    }return resultado
+}
 // 9. Crea una función que reciba una cadena de texto y devuelva la misma cadena con las palabras en orden inverso
 
+    function invertirPalabras(texto){
+    return texto.split(" ").reverse().join(" ")
+}
+
+let invertir = "Esta cadena de texto sera invertida"
+
+console.log(invertirPalabras(invertir))
 // 10. Crea una función que calcule el factorial de un número dado
+function factorial(n){
+
+    let resultado = 1
+
+    for(let i = 1; i <= n; i++){
+        resultado *= i
+    }
+
+    return resultado
+}
+
+console.log(factorial(5))
