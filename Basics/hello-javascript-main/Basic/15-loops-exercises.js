@@ -59,7 +59,42 @@ for (let i = 1; i <= 9; i++){
     console.log(`5x${i} es: ${aux}`)
 }
 // 8. Usa un bucle para invertir una cadena de texto
-//QUEDAMOS AQUI
-// 9. Usa un bucle para generar los primeros 10 números de la secuencia de Fibonacci
+let cadena = "te reto a que inviertas este texto"
+console.log(cadena)
+let auxarray = []
+let esperado = ""
+for(let valor of cadena){
+    auxarray.unshift(valor)
+}
+for(let valor of auxarray){
+    esperado = esperado + valor
+}
+console.log(esperado)
 
+//Manera sencilla
+let invertido = cadena.split("").reverse().join("")
+
+console.log(invertido)
+ 
+// 9. Usa un bucle para generar los primeros 10 números de la secuencia de Fibonacci
+let a = 0
+let b = 1
+
+for(let i = 0; i < 10; i++){
+    console.log(a)
+    
+    let siguiente = a + b
+    a = b
+    b = siguiente
+}
 // 10. Dado un array de números, usa un bucle para crear un nuevo array que contenga solo los números mayores a 10
+
+let numerosAletorios
+
+for (let i = 0; i < 10; i++){
+    numeros.push(Math.floor(Math.random() * 20))
+    if (numeros[i] > 10){
+        console.log(`Numero mayor a 10:  ${numeros[i]}`)
+    }
+}
+

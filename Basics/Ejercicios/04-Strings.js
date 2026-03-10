@@ -50,3 +50,16 @@ console.log(nombre) // Alex, Hola, soy un string
 //textos en variables
 let texto1 = `Hola, soy un string
 y me gusta JavaScript`
+
+// uso del join 
+let palabras = ["Hola", "como", "estas"]
+
+let frase = palabras.join(" ")
+
+//console.log(frase)
+
+let frutas = ["manzana", "banana", "naranja"]
+
+let lista = frutas.join(", ")
+
+//console.log(lista)
