@@ -1,3 +1,4 @@
+
 //Strings
 let soyUnString = "Hola, soy un string"
 let adicional = " y me gusta JavaScript"
@@ -40,11 +41,11 @@ console.log("El índice de 'soy' es " + soyUnString.indexOf("soy")) // 6
 
 
 // el replace() método devuelve una nueva cadena con algunas o todas las coincidencias de un patrón reemplazadas por un reemplazo,
-console.log("Reemplazando 'Hola' por 'Adiós' " + soyUnString.replace("Hola", "Adiós")) // Adiós, soy un string
+console.log("Reemplazando 'Hola' por 'Adiós' " + soyUnString.replace("Hola", "******")) // Adiós, soy un string
 
 
 // simbolo del acento invertido
-let nombre = `Alex, ${soyUnString}`
+let nombre = `Alex, ${soyUnString}`  
 console.log(nombre) // Alex, Hola, soy un string
 
 //textos en variables

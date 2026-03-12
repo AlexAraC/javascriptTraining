@@ -9,7 +9,6 @@ BUENA SUERTE Y DIVIERTETE APRENDIENDO ESTE LENGUAJE TAN INCREIBLE COMO LO ES JAV
 
 // Impresión en consola
 console.log("Hello, World!")
-
 /*
 Este es un comentario de varias líneas
 console.log("Hello, World!")
@@ -25,3 +24,6 @@ console.log(5 * 2)
 console.log(5 / 2)
 console.log(5 % 2)
 console.log(5 ** 2)
+
+
+

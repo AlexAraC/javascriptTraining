@@ -53,3 +53,5 @@ console.log(!(5 > 10)); // true
 let age = 20;
 let canVote = age >= 18 ? "Puede votar" : "No puede votar";
 console.log(canVote);
+
+

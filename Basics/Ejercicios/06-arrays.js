@@ -2,8 +2,8 @@
 //Delcaracion
 
 let arrayEjemplo = ["Alex", "Araya", edad = 21, true, edadDeMayor = 3] //multiples tipos de elementos dentro
-otraFormaDeDeclararlo = new Array()
 
+otraFormaDeDeclararlo = new Array()
 
 
 //operaciones dentro de sus factores
@@ -40,10 +40,10 @@ numeros.unshift(10);//puede meter muchos a la vez
 
 // .slice() sirve para generar una particion de un array
 
-let particion  = arrayEjemplo.slice(0, 1)
+let particion  = arrayEjemplo.slice(0, 2)
 
-console.log(particion)
-
+console.log('Sacamos nombre ' +particion)
+ 
 //array.splice(inicio, cantidadEliminar, elemento1, elemento2, ...)
 //podemos remplazar elementos de un dato en especifico como podemos eliminar elementos dentro del array hasta agregar
 
@@ -55,7 +55,7 @@ frutas.splice(1, 2)
 //Ejecutado de esta forma eliminara lo que hay en el campo 1 y 2, si hubiera mas como (1,6) eliminara todo en medio 
 
 //Agregar
-frutas.splice(1, 0, "banana"); //agregamos al final el valor a agregar y estara en medio de 1 y 0
+frutas.splice(0, 0, "banana"); //agregamos al final el valor a agregar y estara en medio de 1 y 0
 
 //Remplazar
 

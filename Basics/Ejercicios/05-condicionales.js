@@ -1,10 +1,14 @@
 let age = 21
 
+
+
 if (age >= 18){
     console.log("La persona puede votar")
 }else{
     console.log("La persona no puede votar")
 }
+
+
 if (age != 23){
     console.log("La persona no tiene 23 ")
 }
@@ -13,6 +17,8 @@ if (age == 20){
     console.log("La persona tiene 20 ")
 }else if (age == 21){
     console.log("La persona tiene 21 ")
+}else{
+    
 }
 
 

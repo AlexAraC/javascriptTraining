@@ -1,9 +1,8 @@
 // Loops
-
 //for
 
 for (let i = 0; i < 5; i = i+1){//para no confundir lo hago asi pero la forma achicada es i++
-    //console.log(`hola numero ${i}`)
+    console.log(`hola numero ${i}`)
 }
 
 const numeros = [1, 2, 3, 4 ,5]

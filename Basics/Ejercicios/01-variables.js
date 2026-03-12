@@ -18,6 +18,7 @@ helloWorldLet = 'Hello, JavaScript with let! Again'
 console.log(helloWorldLet)
 
 //const
-
 const helloWorldConst = 'Hello, JavaScript with const!'
 console.log(helloWorldConst)
+
+
