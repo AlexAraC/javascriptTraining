@@ -175,7 +175,7 @@ function comparacionNegativa(array1eje6, array2Eje6){
 }
 //console.log(comparacionNegativa(array1eje6, array2Eje6))
 
-/*
+/* 7
 Ordenar objetos
 
 Dado un array de objetos con precios:
@@ -216,4 +216,87 @@ function ordenarObjeto(productos, resultado = []) {
 
 let ordenados = ordenarObjeto([...productos])
 
-console.log(ordenados)
+//console.log(ordenados)
+/*8: Encontrar duplicados
+
+Dado un array, devuelve solo los valores duplicados.
+
+*/ 
+let array8 = [1, 2, 3, 4, 2, 5, 6, 3, 7, 8, 5, 9, 1, 10]
+
+function encontrarDuplicados(array8){
+    let arrayAux = array8
+    let arrayresult = []
+    let u = 0
+    for(let i = 0; i < arrayAux.length; i++){
+        for(let e = 0; e < arrayAux.length; e++){
+            if(array8[i] == arrayAux[e]){
+                u ++
+            }
+        }
+        if(u >= 2){
+            if(!arrayresult.includes(array8[i])){
+                arrayresult[i] = array8[i]
+            }
+        }
+        u = 0
+    }
+    return arrayresult
+}
+//console.log('solo duplicados' + encontrarDuplicados(array8))
+
+/*9:Simular map
+Implementa tu propia función miMap(array, callback) que funcione como map.*/
+
+let numeros = [1, 2, 3, 4, 6, 7]
+
+function mapear(numeros, callback){
+    let resultado = []
+
+    for(let i = 0; i < numeros.length; i++){
+        resultado.push(callback(numeros[i], i, numeros))
+    }
+    return resultado
+
+}
+//console.log(mapear(numeros, n => n + 1))
+
+//10 Validar estructura de objeto
+
+// Crea una función que verifique si un objeto cumple una estructura.
+
+let usuarios = [
+  {
+    nombre: "Alex",
+    edad: 22,
+    activo: true
+  },
+  {
+    nombre: "María",
+    edad: 30,
+    activo: false
+  },
+  {
+    nombre: "Carlos",
+    edad: 25,   // ❌ debería ser number
+    activo: true
+  }
+]
+
+
+function valdicacionUsuarios(usuarios){
+    let formato = {
+        nombre: "nombre",
+        edad: 1,
+        activo: false
+    }
+    for(let i = 0; i < usuarios.length; i++){
+        if(typeof usuarios[i].nombre !== typeof formato.nombre || typeof usuarios[i].edad !== typeof formato.edad || typeof usuarios[i].activo !== typeof formato.activo){
+            return "parametro no validado"
+        }
+     }
+    return "Parametros validados"
+
+}
+
+console.log(valdicacionUsuarios(usuarios))
