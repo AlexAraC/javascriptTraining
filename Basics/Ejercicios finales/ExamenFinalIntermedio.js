@@ -189,3 +189,32 @@ Implementa una versión simple de:
 on(evento, callback)
 emit(evento)
 */
+function crearEventEmitter() {
+  const eventos = {};
+
+  function on(evento, callback) {
+    if (!eventos[evento]) {
+      eventos[evento] = [];
+    }
+    eventos[evento].push(callback);
+  }
+
+  function emit(evento) {
+    if (eventos[evento]) {
+      eventos[evento].forEach(fn => fn());
+    }
+  }
+
+  return { on, emit };
+}
+const emitter = crearEventEmitter();
+
+emitter.on("saludo", () => {
+  console.log("Hola");
+});
+
+emitter.on("saludo", () => {
+  console.log("¿Cómo estás?");
+});
+
+emitter.emit("saludo");
