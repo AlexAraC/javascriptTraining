@@ -190,7 +190,7 @@ function filtrarPor(usuarios){
   menu();
 }
 
-filtrarPor(usuarios);
+//filtrarPor(usuarios);
 
 
 /*2- 
@@ -206,6 +206,52 @@ ejecute primero las de mayor prioridad
 
  */
 
+class Planificador {
+  constructor() {
+    this.tareas = [];
+  }
+
+  // Registrar tarea
+  agregarTarea(nombre, prioridad) {
+    this.tareas.push({ nombre, prioridad });
+  }
+
+  // Ordenar por prioridad (mayor primero)
+  ordenarTareas() {
+    this.tareas.sort((a, b) => b.prioridad - a.prioridad);
+  }
+
+  // Ejecutar siguiente tarea
+  ejecutarTarea() {
+    if (this.tareas.length === 0) {
+      console.log("No hay tareas");
+      return;
+    }
+
+    this.ordenarTareas();
+    const tarea = this.tareas.shift(); // saca la de mayor prioridad
+    console.log(`Ejecutando: ${tarea.nombre} (Prioridad: ${tarea.prioridad})`);
+  }
+
+  // Ver tareas
+  verTareas() {
+    console.log(this.tareas);
+  }
+}
+const plan = new Planificador();
+
+//plan.agregarTarea("Hacer tarea", 2);
+//plan.agregarTarea("Dormir", 1);
+//plan.agregarTarea("Proyecto final", 5);
+//plan.agregarTarea("Comer", 3);
+
+//plan.verTareas();
+
+// Ejecuta en orden de prioridad
+//plan.ejecutarTarea(); // Proyecto final
+//plan.ejecutarTarea(); // Comer
+//plan.ejecutarTarea(); // Hacer tarea
+//plan.ejecutarTarea(); // Dormir
 /*3- Sistema de reintentos inteligente
 
 Crea una función que:
@@ -219,3 +265,35 @@ aumente el tiempo entre intentos
 (Estrategia exponential backoff).
 
  */
+async function reintentar(fn, maxIntentos = 5, delayInicial = 1000) {
+  let intento = 0;
+  let delay = delayInicial;
+
+  while (intento < maxIntentos) {
+    try {
+      return await fn(); // intenta ejecutar la función
+    } catch (error) {
+      intento++;
+
+      if (intento === maxIntentos) {
+        throw new Error("❌ Falló después de varios intentos");
+      }
+
+      console.log(`⚠️ Intento ${intento} falló. Reintentando en ${delay}ms...`);
+
+      await new Promise(resolve => setTimeout(resolve, delay));
+
+      delay *= 2; // 🔥 exponential backoff
+    }
+  }
+}
+async function funcionInestable() {
+  if (Math.random() < 0.7) {
+    throw new Error("Error aleatorio");
+  }
+  return "✅ Éxito";
+}
+
+reintentar(funcionInestable)
+  .then(res => console.log(res))
+  .catch(err => console.error(err.message));
