@@ -37,51 +37,141 @@ const usuarios = [
   { nombre: "Ricardo", edad: 35, pais: "CO" },
   { nombre: "Paula", edad: 22, pais: "CL" }
 ];
-const readline = require("readline");//Necesario para inputs
 
-const rl = readline.createInterface({//es la forma de declarar la variable es un standar
+const readline = require("readline");
+
+const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-function flitrarPor(usuarios){
+function filtrarPor(usuarios){
 
   function menu(){
-    console.log("\nMenu")
-    console.log("1. Para filtrar por una condicion")
-    console.log("2. Para filtrar 2 condiciones")
-    console.log("3. Para encontrar un usuario por sus datos completos")
-    console.log("4. Para salir")
-    arrayRespuesta = []
+    console.log("\nMenu");
+    console.log("1. Filtrar por una condicion");
+    console.log("2. Filtrar por 2 condiciones");
+    console.log("3. Buscar usuario completo");
+    console.log("4. Salir");
+
+    let arrayRespuesta = [];
 
     rl.question("Elige una opción: ", (eleccion) => {
 
       switch(eleccion){
+
         case "1":
-          rl.question("Ingresa 1 si es el nombre, 2 si es la edad o 3 si es la nacionalidad:", (var1) => {
-            if(var1 == 1){
-                rl.question("Digite el nombre a buscar: ", (varNombre) => {
-                    for(let i = 0; i < usuarios.lenght; i++){
-                        if(usuarios[i].nombre == varNombre){
-                            arrayRespuesta.push(usuarios[i])
-                        }
-                    }
-                })
+          rl.question("1=Nombre, 2=Edad, 3=Pais: ", (tipo) => {
+
+            if(tipo === "1"){
+              rl.question("Nombre: ", (nombre) => {
+                arrayRespuesta = usuarios.filter(u => 
+                  u.nombre.toLowerCase() === nombre.toLowerCase()
+                );
+                console.log(arrayRespuesta.length ? arrayRespuesta : "Sin resultados");
+                menu();
+              });
             }
-           
-           
-          })
-          menu();
+
+            if(tipo === "2"){
+              rl.question("Edad minima: ", (min) => {
+                rl.question("Edad maxima: ", (max) => {
+                  const minN = Number(min);
+                  const maxN = Number(max);
+
+                  arrayRespuesta = usuarios.filter(u => 
+                    u.edad >= minN && u.edad <= maxN
+                  );
+
+                  console.log(arrayRespuesta.length ? arrayRespuesta : "Sin resultados");
+                  menu();
+                });
+              });
+            }
+
+            if(tipo === "3"){
+              rl.question("Pais (CR, MX, AR, CO, CL): ", (pais) => {
+
+                if(!["CR","MX","AR","CO","CL"].includes(pais)){
+                  console.log("Pais invalido");
+                  return menu();
+                }
+
+                arrayRespuesta = usuarios.filter(u => u.pais === pais);
+                console.log(arrayRespuesta.length ? arrayRespuesta : "Sin resultados");
+                menu();
+              });
+            }
+
+          });
           break;
 
         case "2":
-          console.log("Elegiste filtrar por 2 condiciones");
-          menu();
+          rl.question("Primera condicion (nombre/edad/pais): ", (c1) => {
+            rl.question("Valor de la primera condicion: ", (v1) => {
+
+              rl.question("Segunda condicion (nombre/edad/pais): ", (c2) => {
+                rl.question("Valor de la segunda condicion: ", (v2) => {
+
+                  arrayRespuesta = usuarios.filter(u => {
+
+                    let cond1 = false;
+                    let cond2 = false;
+
+
+                    if(c1 === "nombre"){
+                      cond1 = u.nombre.toLowerCase() === v1.toLowerCase();
+                    }
+                    if(c1 === "edad"){
+                      cond1 = u.edad === Number(v1);
+                    }
+                    if(c1 === "pais"){
+                      cond1 = u.pais === v1;
+                    }
+
+
+                    if(c2 === "nombre"){
+                      cond2 = u.nombre.toLowerCase() === v2.toLowerCase();
+                    }
+                    if(c2 === "edad"){
+                      cond2 = u.edad === Number(v2);
+                    }
+                    if(c2 === "pais"){
+                      cond2 = u.pais === v2;
+                    }
+
+                    return cond1 && cond2;
+                  });
+
+                  console.log(arrayRespuesta.length ? arrayRespuesta : "Sin resultados");
+                  menu();
+
+                });
+              });
+
+            });
+          });
           break;
 
+
         case "3":
-          console.log("Elegiste buscar usuario completo");
-          menu();
+          rl.question("Nombre: ", (nombre) => {
+            rl.question("Edad: ", (edad) => {
+              rl.question("Pais: ", (pais) => {
+
+                const edadNum = Number(edad);
+
+                arrayRespuesta = usuarios.filter(u =>
+                  u.nombre.toLowerCase() === nombre.toLowerCase() &&
+                  u.edad === edadNum &&
+                  u.pais === pais
+                );
+
+                console.log(arrayRespuesta.length ? arrayRespuesta : "No encontrado");
+                menu();
+              });
+            });
+          });
           break;
 
         case "4":
@@ -100,8 +190,7 @@ function flitrarPor(usuarios){
   menu();
 }
 
-
-
+filtrarPor(usuarios);
 
 
 /*2- 
